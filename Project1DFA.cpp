@@ -50,10 +50,6 @@ float stringToFloatVerificationConversion(string s)
 			{
 				state = 8;
 			}
-			else if (s[i] == NULL)
-			{
-				state = 8;
-			}
 			else
 			{
 				state = 9;
