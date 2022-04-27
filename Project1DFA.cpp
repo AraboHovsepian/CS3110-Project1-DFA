@@ -7,6 +7,7 @@ float stringToFloatVerificationConversion(string s)
 	int state = 0, power = -1;
 	int exponent = 0;
 	float floatNum = 0.0;
+	bool exponentNegativeFlag = false;
 
 	for (int i = 0; i <= s.length(); i++)
 	{
@@ -149,6 +150,10 @@ float stringToFloatVerificationConversion(string s)
 				state = 7;
 				exponent += (s[i] - 48);
 			}
+			else if (s[i] == '-')
+			{
+				exponentNegativeFlag = true;
+			}
 			else
 			{
 				state = 9;
@@ -186,6 +191,10 @@ float stringToFloatVerificationConversion(string s)
 
 	if (state == 8)
 	{
+		if (exponentNegativeFlag)
+		{
+			exponent = exponent * -1;
+		}
 		return (floatNum * pow(10, exponent));
 	}
 	else if (state == 9)
